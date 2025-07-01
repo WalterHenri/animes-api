@@ -17,6 +17,12 @@ public class DirectorsController : ControllerBase
         _logger = logger;
     }
 
+    /// <summary>
+    /// Busca diretores com base nos filtros fornecidos.
+    /// </summary>
+    /// <returns>Uma lista de diretores.</returns>
+    /// <response code="200">Retorna a lista de diretores.</response>
+    /// <response code="500">Se ocorrer um erro interno no servidor.</response>
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<DirectorDto>), 200)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -35,8 +41,14 @@ public class DirectorsController : ControllerBase
         }
     }
 
-    
-
+    /// <summary>
+    /// Cria um novo diretor.
+    /// </summary>
+    /// <param name="command">Os dados para a criação do novo diretor.</param>
+    /// <returns>O diretor recém-criado.</returns>
+    /// <response code="201">Retorna o diretor recém-criado.</response>
+    /// <response code="400">Se os dados fornecidos forem inválidos.</response>
+    /// <response code="500">Se ocorrer um erro interno no servidor.</response>
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -55,6 +67,16 @@ public class DirectorsController : ControllerBase
         }
     }
 
+    /// <summary>
+    /// Atualiza um diretor existente.
+    /// </summary>
+    /// <param name="id">O ID do diretor a ser atualizado.</param>
+    /// <param name="command">Os novos dados para o diretor.</param>
+    /// <returns>O diretor atualizado.</returns>
+    /// <response code="200">Retorna o diretor atualizado.</response>
+    /// <response code="400">Se o ID da rota não corresponder ao ID do corpo da requisição.</response>
+    /// <response code="404">Se o diretor não for encontrado.</response>
+    /// <response code="500">Se ocorrer um erro interno no servidor.</response>
     [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -83,6 +105,14 @@ public class DirectorsController : ControllerBase
         }
     }
 
+    /// <summary>
+    /// Exclui um diretor específico.
+    /// </summary>
+    /// <param name="id">O ID do diretor a ser excluído.</param>
+    /// <returns>Nenhum conteúdo.</returns>
+    /// <response code="204">Se o diretor for excluído com sucesso.</response>
+    /// <response code="404">Se o diretor não for encontrado.</response>
+    /// <response code="500">Se ocorrer um erro interno no servidor.</response>
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
