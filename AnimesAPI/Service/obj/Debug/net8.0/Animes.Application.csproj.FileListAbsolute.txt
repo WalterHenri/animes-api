@@ -1,0 +1,16 @@
+D:\Projects\animes-api\AnimesAPI\Service\obj\Debug\net8.0\Animes.Application.csproj.AssemblyReference.cache
+D:\Projects\animes-api\AnimesAPI\Service\obj\Debug\net8.0\Animes.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\animes-api\AnimesAPI\Service\obj\Debug\net8.0\Animes.Application.AssemblyInfoInputs.cache
+D:\Projects\animes-api\AnimesAPI\Service\obj\Debug\net8.0\Animes.Application.AssemblyInfo.cs
+D:\Projects\animes-api\AnimesAPI\Service\obj\Debug\net8.0\Animes.Application.csproj.CoreCompileInputs.cache
+D:\Projects\animes-api\AnimesAPI\Service\obj\Debug\net8.0\Animes.Application.sourcelink.json
+D:\Projects\animes-api\AnimesAPI\Service\bin\Debug\net8.0\Animes.Application.deps.json
+D:\Projects\animes-api\AnimesAPI\Service\bin\Debug\net8.0\Animes.Application.dll
+D:\Projects\animes-api\AnimesAPI\Service\bin\Debug\net8.0\Animes.Application.pdb
+D:\Projects\animes-api\AnimesAPI\Service\bin\Debug\net8.0\Animes.Domain.dll
+D:\Projects\animes-api\AnimesAPI\Service\bin\Debug\net8.0\Animes.Domain.pdb
+D:\Projects\animes-api\AnimesAPI\Service\obj\Debug\net8.0\Animes.A.93380F74.Up2Date
+D:\Projects\animes-api\AnimesAPI\Service\obj\Debug\net8.0\Animes.Application.dll
+D:\Projects\animes-api\AnimesAPI\Service\obj\Debug\net8.0\refint\Animes.Application.dll
+D:\Projects\animes-api\AnimesAPI\Service\obj\Debug\net8.0\Animes.Application.pdb
+D:\Projects\animes-api\AnimesAPI\Service\obj\Debug\net8.0\ref\Animes.Application.dll

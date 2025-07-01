@@ -4,12 +4,12 @@
     "D:\\Projects\\animes-api\\AnimesAPI\\Service\\Service.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\animes-api\\AnimesAPI\\Core\\Core.csproj": {
+    "D:\\Projects\\animes-api\\AnimesAPI\\Core\\Animes.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\animes-api\\AnimesAPI\\Core\\Core.csproj",
-        "projectName": "Core",
-        "projectPath": "D:\\Projects\\animes-api\\AnimesAPI\\Core\\Core.csproj",
+        "projectUniqueName": "D:\\Projects\\animes-api\\AnimesAPI\\Core\\Animes.Domain.csproj",
+        "projectName": "Animes.Domain",
+        "projectPath": "D:\\Projects\\animes-api\\AnimesAPI\\Core\\Animes.Domain.csproj",
         "packagesPath": "C:\\Users\\walte\\.nuget\\packages\\",
         "outputPath": "D:\\Projects\\animes-api\\AnimesAPI\\Core\\obj\\",
         "projectStyle": "PackageReference",
@@ -121,8 +121,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Projects\\animes-api\\AnimesAPI\\Core\\Core.csproj": {
-                "projectPath": "D:\\Projects\\animes-api\\AnimesAPI\\Core\\Core.csproj"
+              "D:\\Projects\\animes-api\\AnimesAPI\\Core\\Animes.Domain.csproj": {
+                "projectPath": "D:\\Projects\\animes-api\\AnimesAPI\\Core\\Animes.Domain.csproj"
               }
             }
           }
