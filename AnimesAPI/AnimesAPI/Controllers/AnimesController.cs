@@ -17,6 +17,15 @@ public class AnimesController : ControllerBase
         _logger = logger;
     }
 
+    /// <summary>
+    /// Busca animes com base nos filtros fornecidos.
+    /// </summary>
+    /// <param name="id">Filtra os animes pelo ID.</param>
+    /// <param name="name">Filtra os animes pelo nome (busca parcial).</param>
+    /// <param name="director">Filtra os animes pelo nome do diretor (busca parcial).</param>
+    /// <returns>Uma lista de animes que correspondem aos critérios de busca.</returns>
+    /// <response code="200">Retorna a lista de animes.</response>
+    /// <response code="500">Se ocorrer um erro interno no servidor.</response>
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<AnimeDto>), 200)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -35,6 +44,14 @@ public class AnimesController : ControllerBase
         }
     }
 
+    /// <summary>
+    /// Cria um novo anime.
+    /// </summary>
+    /// <param name="command">Os dados para a criação do novo anime.</param>
+    /// <returns>O anime recém-criado.</returns>
+    /// <response code="201">Retorna o anime recém-criado.</response>
+    /// <response code="400">Se os dados fornecidos forem inválidos.</response>
+    /// <response code="500">Se ocorrer um erro interno no servidor.</response>
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -54,6 +71,16 @@ public class AnimesController : ControllerBase
     }
 
 
+    /// <summary>
+    /// Atualiza um anime existente.
+    /// </summary>
+    /// <param name="id">O ID do anime a ser atualizado.</param>
+    /// <param name="command">Os novos dados para o anime.</param>
+    /// <returns>O anime atualizado.</returns>
+    /// <response code="200">Retorna o anime atualizado.</response>
+    /// <response code="400">Se o ID da rota não corresponder ao ID do corpo da requisição.</response>
+    /// <response code="404">Se o anime não for encontrado.</response>
+    /// <response code="500">Se ocorrer um erro interno no servidor.</response>
     [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -83,6 +110,14 @@ public class AnimesController : ControllerBase
     }
 
 
+    /// <summary>
+    /// Exclui um anime específico.
+    /// </summary>
+    /// <param name="id">O ID do anime a ser excluído.</param>
+    /// <returns>Nenhum conteúdo.</returns>
+    /// <response code="204">Se o anime for excluído com sucesso.</response>
+    /// <response code="404">Se o anime não for encontrado.</response>
+    /// <response code="500">Se ocorrer um erro interno no servidor.</response>
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
