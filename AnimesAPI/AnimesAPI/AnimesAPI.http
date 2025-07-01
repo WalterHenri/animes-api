@@ -1,0 +1,6 @@
+@AnimesAPI_HostAddress = http://localhost:5045
+
+GET {{AnimesAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
