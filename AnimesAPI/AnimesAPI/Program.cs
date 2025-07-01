@@ -19,6 +19,7 @@ builder.Services.AddDbContext<AnimeDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IAnimeRepository, AnimeRepository>();
+builder.Services.AddScoped<IDirectorRepository, DirectorRepository>();
 
 builder.Services.AddAutoMapper(typeof(AnimeProfile));
 
