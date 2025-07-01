@@ -1,0 +1,6 @@
+{
+  "Animes.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Projects\\animes-api\\AnimesAPI\\Service",
+  "Animes.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Projects\\animes-api\\AnimesAPI\\Core",
+  "Animes.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Projects\\animes-api\\AnimesAPI\\Animes.Infrastructure",
+  "AnimesAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Projects\\animes-api\\AnimesAPI\\AnimesAPI"
+}

@@ -1,5 +1,4 @@
-﻿
-using Animes.Application.DTOs;
+﻿using Animes.Application.DTOs;
 using Animes.Application.Features.Animes.Queries;
 using Animes.Application.Features.Animes.Queries.Handlers;
 using Animes.Application.Mappers;
@@ -12,14 +11,13 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
 namespace Animes.Tests.Application.Animes.Handlers
 {
-    public class GetAnimesQueryHandlerTests
+    public class GetAnimesQueryHandlerTests : IDisposable
     {
         private readonly AnimeDbContext context;
         private readonly IAnimeRepository animeRepository;
@@ -28,12 +26,13 @@ namespace Animes.Tests.Application.Animes.Handlers
 
         public GetAnimesQueryHandlerTests()
         {
-            // Configuração do banco de dados em memória
-            var options = new DbContextOptionsBuilder<AnimeDbContext>()
-                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
-                .Options;
-
+            var builder = new DbContextOptionsBuilder<AnimeDbContext>();
+            builder.UseInMemoryDatabase("InMemoryTestingDatabase");
+            var options = builder.Options;
             context = new AnimeDbContext(options);
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated(); 
+
             animeRepository = new AnimeRepository(context);
             var mappingConfig = new MapperConfiguration(mc =>
             {
@@ -42,7 +41,6 @@ namespace Animes.Tests.Application.Animes.Handlers
             mapper = mappingConfig.CreateMapper();
             handler = new GetAnimesQueryHandler(animeRepository, mapper);
         }
-
 
         [Fact]
         public async Task Handle_ShouldReturnAllAnimes_WhenAnimesExist()
@@ -107,6 +105,13 @@ namespace Animes.Tests.Application.Animes.Handlers
 
             await context.Animes.AddRangeAsync(anime1, anime2);
             await context.SaveChangesAsync();
+        }
+
+        // Garante que o banco de dados em memória seja descartado após cada teste
+        public void Dispose()
+        {
+            context.Database.EnsureDeleted();
+            context.Dispose();
         }
     }
 }

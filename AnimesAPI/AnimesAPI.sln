@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animes.Infrastructure", "An
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animes.Application.Tests", "Animes.Application.Tests\Animes.Application.Tests.csproj", "{D256F1D6-96F6-4A56-8927-50FBC28DA58F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animes.API.Tests", "Animes.API.Tests\Animes.API.Tests.csproj", "{8B0AE8BB-12E4-4682-8ECA-524B0AD2223E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D256F1D6-96F6-4A56-8927-50FBC28DA58F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D256F1D6-96F6-4A56-8927-50FBC28DA58F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D256F1D6-96F6-4A56-8927-50FBC28DA58F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B0AE8BB-12E4-4682-8ECA-524B0AD2223E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B0AE8BB-12E4-4682-8ECA-524B0AD2223E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B0AE8BB-12E4-4682-8ECA-524B0AD2223E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B0AE8BB-12E4-4682-8ECA-524B0AD2223E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
