@@ -1,4 +1,5 @@
-﻿using Animes.Application.Features.Animes.Commands;
+﻿using Animes.Application.DTOs;
+using Animes.Application.Features.Animes.Commands;
 using Animes.Application.Features.Animes.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -16,8 +17,9 @@ public class AnimesController : ControllerBase
         _logger = logger;
     }
 
-
     [HttpGet]
+    [ProducesResponseType(typeof(IEnumerable<AnimeDto>), 200)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> GetAnimes([FromQuery] int? id, [FromQuery] string? name, [FromQuery] string? director)
     {
         try
@@ -34,6 +36,9 @@ public class AnimesController : ControllerBase
     }
 
     [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> CreateAnime([FromBody] CreateAnimeCommand command)
     {
         try
@@ -48,7 +53,12 @@ public class AnimesController : ControllerBase
         }
     }
 
+
     [HttpPut("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> UpdateAnime(int id, [FromBody] UpdateAnimeCommand command)
     {
         if (id != command.Id)
@@ -72,7 +82,11 @@ public class AnimesController : ControllerBase
         }
     }
 
+
     [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> DeleteAnime(int id)
     {
         try
