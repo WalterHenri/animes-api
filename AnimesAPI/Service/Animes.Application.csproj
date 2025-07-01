@@ -16,4 +16,8 @@
     <ProjectReference Include="..\Core\Animes.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Directors\Queries\Handlers\" />
+  </ItemGroup>
+
 </Project>

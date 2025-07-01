@@ -195,3 +195,5 @@ D:\Projects\animes-api\AnimesAPI\AnimesAPI\bin\Debug\net8.0\Animes.Infrastructur
 D:\Projects\animes-api\AnimesAPI\AnimesAPI\bin\Debug\net8.0\Animes.Application.pdb
 D:\Projects\animes-api\AnimesAPI\AnimesAPI\bin\Debug\net8.0\Animes.Domain.pdb
 D:\Projects\animes-api\AnimesAPI\AnimesAPI\obj\Debug\net8.0\AnimesAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\Projects\animes-api\AnimesAPI\AnimesAPI\bin\Debug\net8.0\AnimesAPI.xml
+D:\Projects\animes-api\AnimesAPI\AnimesAPI\obj\Debug\net8.0\AnimesAPI.xml
