@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Animes.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75583e9c55f8b953265b900194b7c78062734327")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aeb2956fb646d24429019367bc7b987546650830")]
 [assembly: System.Reflection.AssemblyProductAttribute("Animes.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Animes.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
