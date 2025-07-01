@@ -1,37 +1,76 @@
-# Arquivos de configuração do usuário
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
+# # # # # # # # # # # # # # # # # # # # # #
+# Arquivos gerados pelo sistema operacional
+# # # # # # # # # # # # # # # # # # # # # #
 
-# Arquivos de compilação
-/[Bb]in/
-/[Oo]bj/
+# Cache de miniaturas do Windows
+Thumbs.db
+ehthumbs.db
+
+# Arquivos de despejo
+*.stackdump
+
+# Configuração de pasta do Windows
+Desktop.ini
+
+# Lixeira do Windows em compartilhamentos de rede
+$RECYCLE.BIN/
+
+# Arquivos do instalador do Windows
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Atalhos do Windows
+*.lnk
+
+# # # # # # # # # # #
+# Arquivos do .NET
+# # # # # # # # # # #
+
+# Pastas de build
+[Bb]in/
+[Oo]bj/
+
+# Arquivos de log e saída
+*.log
+*.log.*
+logs/
+*.svclog
 
 # Arquivos de cache e temporários do .NET Core
 .project.lock.json
 project.fragment.lock.json
-project.assets.json
+*.nuget.props
+*.nuget.targets
 
-# Arquivos de log
-*.log
+# Arquivos de publicação
+[Pp]ublish/
+[Rr]elease/
+/bin/Release/
+/obj/Release/
 
+# # # # # # # # # # # # # #
 # Arquivos do Visual Studio
+# # # # # # # # # # # # # #
+
+# Arquivos específicos do usuário e da solução
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 .vs/
+
+# Arquivos de usuário do projeto
 *.csproj.user
-*.sln.dotsettings.user
 
 # Arquivos de pacotes
 /packages/
 
-# Arquivos de publicação
-/publish/
+# Arquivos de publicação do Visual Studio
 *.pubxml
 *.pubxml.user
-
-# Arquivos de configuração local (para evitar o envio de segredos)
-appsettings.Development.json
-appsettings.local.json
 
 # Arquivos gerados pelo sistema
 *.cache
@@ -39,7 +78,7 @@ appsettings.local.json
 *.g.cs
 *.g.i.cs
 
-# Outros
+# Outros arquivos temporários
 *.swp
 *~
 *.*~
