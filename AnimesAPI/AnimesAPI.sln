@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36202.13 d17.14
+VisualStudioVersion = 17.14.36202.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimesAPI", "AnimesAPI\AnimesAPI.csproj", "{D2B3C57D-DB4F-431D-AF1B-94EEB47EDAF5}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animes.Application", "Service\Animes.Application.csproj", "{E9F96C52-120E-4E13-9F5C-DE40966EAC82}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animes.Infrastructure", "Animes.Infrastructure\Animes.Infrastructure.csproj", "{959D7048-97FA-465A-923D-69DA19D029EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animes.Application.Tests", "Animes.Application.Tests\Animes.Application.Tests.csproj", "{D256F1D6-96F6-4A56-8927-50FBC28DA58F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{959D7048-97FA-465A-923D-69DA19D029EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{959D7048-97FA-465A-923D-69DA19D029EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{959D7048-97FA-465A-923D-69DA19D029EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D256F1D6-96F6-4A56-8927-50FBC28DA58F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D256F1D6-96F6-4A56-8927-50FBC28DA58F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D256F1D6-96F6-4A56-8927-50FBC28DA58F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D256F1D6-96F6-4A56-8927-50FBC28DA58F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

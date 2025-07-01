@@ -16,6 +16,7 @@ public class AnimesController : ControllerBase
         _logger = logger;
     }
 
+
     [HttpGet]
     public async Task<IActionResult> GetAnimes([FromQuery] int? id, [FromQuery] string? name, [FromQuery] string? director)
     {

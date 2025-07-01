@@ -1,0 +1,15 @@
+D:\Projects\animes-api\AnimesAPI\Core\obj\Debug\net8.0\Animes.Domain.csproj.AssemblyReference.cache
+D:\Projects\animes-api\AnimesAPI\Core\obj\Debug\net8.0\Animes.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\animes-api\AnimesAPI\Core\obj\Debug\net8.0\Animes.Domain.AssemblyInfoInputs.cache
+D:\Projects\animes-api\AnimesAPI\Core\obj\Debug\net8.0\Animes.Domain.AssemblyInfo.cs
+D:\Projects\animes-api\AnimesAPI\Core\obj\Debug\net8.0\Animes.Domain.csproj.CoreCompileInputs.cache
+D:\Projects\animes-api\AnimesAPI\Core\obj\Debug\net8.0\Animes.Domain.sourcelink.json
+D:\Projects\animes-api\AnimesAPI\Core\bin\Debug\net8.0\Animes.Domain.deps.json
+D:\Projects\animes-api\AnimesAPI\Core\bin\Debug\net8.0\Animes.Domain.runtimeconfig.json
+D:\Projects\animes-api\AnimesAPI\Core\bin\Debug\net8.0\Animes.Domain.dll
+D:\Projects\animes-api\AnimesAPI\Core\bin\Debug\net8.0\Animes.Domain.pdb
+D:\Projects\animes-api\AnimesAPI\Core\obj\Debug\net8.0\Animes.Domain.dll
+D:\Projects\animes-api\AnimesAPI\Core\obj\Debug\net8.0\refint\Animes.Domain.dll
+D:\Projects\animes-api\AnimesAPI\Core\obj\Debug\net8.0\Animes.Domain.pdb
+D:\Projects\animes-api\AnimesAPI\Core\obj\Debug\net8.0\Animes.Domain.genruntimeconfig.cache
+D:\Projects\animes-api\AnimesAPI\Core\obj\Debug\net8.0\ref\Animes.Domain.dll
