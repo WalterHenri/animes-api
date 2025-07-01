@@ -16,13 +16,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AnimeDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddMediatR(cfg =>
-    cfg.RegisterServicesFromAssembly(typeof(GetAllAnimesQuery).Assembly));
-
 builder.Services.AddScoped<IAnimeRepository, AnimeRepository>();
 
 builder.Services.AddAutoMapper(typeof(AnimeProfile));
+
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining(typeof(AnimeProfile)));
+builder.Services.AddMediatR(cfg => 
+    cfg.RegisterServicesFromAssembly(typeof(GetAnimesQuery).Assembly));
 
 
 // Add services to the container.
