@@ -4,5 +4,88 @@
         <name>AnimesAPI</name>
     </assembly>
     <members>
+        <member name="M:AnimesController.GetAnimes(System.Nullable{System.Int32},System.String,System.String)">
+            <summary>
+            Busca animes com base nos filtros fornecidos.
+            </summary>
+            <param name="id">Filtra os animes pelo ID.</param>
+            <param name="name">Filtra os animes pelo nome (busca parcial).</param>
+            <param name="director">Filtra os animes pelo nome do diretor (busca parcial).</param>
+            <returns>Uma lista de animes que correspondem aos critérios de busca.</returns>
+            <response code="200">Retorna a lista de animes.</response>
+            <response code="500">Se ocorrer um erro interno no servidor.</response>
+        </member>
+        <member name="M:AnimesController.CreateAnime(Animes.Application.Features.Animes.Commands.CreateAnimeCommand)">
+            <summary>
+            Cria um novo anime.
+            </summary>
+            <param name="command">Os dados para a criação do novo anime.</param>
+            <returns>O anime recém-criado.</returns>
+            <response code="201">Retorna o anime recém-criado.</response>
+            <response code="400">Se os dados fornecidos forem inválidos.</response>
+            <response code="500">Se ocorrer um erro interno no servidor.</response>
+        </member>
+        <member name="M:AnimesController.UpdateAnime(System.Int32,Animes.Application.Features.Animes.Commands.UpdateAnimeCommand)">
+            <summary>
+            Atualiza um anime existente.
+            </summary>
+            <param name="id">O ID do anime a ser atualizado.</param>
+            <param name="command">Os novos dados para o anime.</param>
+            <returns>O anime atualizado.</returns>
+            <response code="200">Retorna o anime atualizado.</response>
+            <response code="400">Se o ID da rota não corresponder ao ID do corpo da requisição.</response>
+            <response code="404">Se o anime não for encontrado.</response>
+            <response code="500">Se ocorrer um erro interno no servidor.</response>
+        </member>
+        <member name="M:AnimesController.DeleteAnime(System.Int32)">
+            <summary>
+            Exclui um anime específico.
+            </summary>
+            <param name="id">O ID do anime a ser excluído.</param>
+            <returns>Nenhum conteúdo.</returns>
+            <response code="204">Se o anime for excluído com sucesso.</response>
+            <response code="404">Se o anime não for encontrado.</response>
+            <response code="500">Se ocorrer um erro interno no servidor.</response>
+        </member>
+        <member name="M:DirectorsController.GetDirectors">
+            <summary>
+            Busca diretores com base nos filtros fornecidos.
+            </summary>
+            <returns>Uma lista de diretores.</returns>
+            <response code="200">Retorna a lista de diretores.</response>
+            <response code="500">Se ocorrer um erro interno no servidor.</response>
+        </member>
+        <member name="M:DirectorsController.CreateDirector(Animes.Application.Features.Directors.Commands.CreateDirectorCommand)">
+            <summary>
+            Cria um novo diretor.
+            </summary>
+            <param name="command">Os dados para a criação do novo diretor.</param>
+            <returns>O diretor recém-criado.</returns>
+            <response code="201">Retorna o diretor recém-criado.</response>
+            <response code="400">Se os dados fornecidos forem inválidos.</response>
+            <response code="500">Se ocorrer um erro interno no servidor.</response>
+        </member>
+        <member name="M:DirectorsController.UpdateDirector(System.Int32,Animes.Application.Features.Directors.Commands.UpdateDirectorCommand)">
+            <summary>
+            Atualiza um diretor existente.
+            </summary>
+            <param name="id">O ID do diretor a ser atualizado.</param>
+            <param name="command">Os novos dados para o diretor.</param>
+            <returns>O diretor atualizado.</returns>
+            <response code="200">Retorna o diretor atualizado.</response>
+            <response code="400">Se o ID da rota não corresponder ao ID do corpo da requisição.</response>
+            <response code="404">Se o diretor não for encontrado.</response>
+            <response code="500">Se ocorrer um erro interno no servidor.</response>
+        </member>
+        <member name="M:DirectorsController.DeleteDirector(System.Int32)">
+            <summary>
+            Exclui um diretor específico.
+            </summary>
+            <param name="id">O ID do diretor a ser excluído.</param>
+            <returns>Nenhum conteúdo.</returns>
+            <response code="204">Se o diretor for excluído com sucesso.</response>
+            <response code="404">Se o diretor não for encontrado.</response>
+            <response code="500">Se ocorrer um erro interno no servidor.</response>
+        </member>
     </members>
 </doc>
