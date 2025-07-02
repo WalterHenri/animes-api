@@ -1,4 +1,5 @@
 ﻿using Animes.Application.DTOs;
+using Animes.Application.Features.Animes.Commands.Handlers;
 using Animes.Application.Features.Animes.Queries;
 using Animes.Application.Features.Animes.Queries.Handlers;
 using Animes.Application.Mappers;
@@ -8,6 +9,8 @@ using Animes.Infrastructure.Persistence.Contexts;
 using Animes.Infrastructure.Persistence.Repositories;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +26,7 @@ namespace Animes.Tests.Application.Animes.Handlers
         private readonly IAnimeRepository animeRepository;
         private readonly GetAnimesQueryHandler handler;
         private readonly IMapper mapper;
+        private readonly Mock<ILogger<GetAnimesQueryHandler>> loggerMock;
 
         public GetAnimesQueryHandlerTests()
         {
@@ -39,7 +43,8 @@ namespace Animes.Tests.Application.Animes.Handlers
                 mc.AddProfile(new AnimeProfile());
             });
             mapper = mappingConfig.CreateMapper();
-            handler = new GetAnimesQueryHandler(animeRepository, mapper);
+            loggerMock = new Mock<ILogger<GetAnimesQueryHandler>>();
+            handler = new GetAnimesQueryHandler(animeRepository, mapper, loggerMock.Object);
         }
 
         [Fact]

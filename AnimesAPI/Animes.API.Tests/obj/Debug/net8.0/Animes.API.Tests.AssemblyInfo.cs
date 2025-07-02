@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Animes.API.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0fc5415d1bf863cb2a35a86fca7a31b468c65694")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5561aace18bec117e6852c1955d4bd3737656995")]
 [assembly: System.Reflection.AssemblyProductAttribute("Animes.API.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Animes.API.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

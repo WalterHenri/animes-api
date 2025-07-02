@@ -4,6 +4,7 @@ using Animes.Application.Mappers;
 using Animes.Domain.Entities;
 using Animes.Domain.Interfaces.Repositories;
 using AutoMapper;
+using Microsoft.Extensions.Logging;
 using Moq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,18 +15,29 @@ namespace Animes.Application.Tests.Features.Animes.Commands
     public class CreateAnimeCommandHandlerTests
     {
         private readonly Mock<IAnimeRepository> _animeRepositoryMock;
+        private readonly Mock<IDirectorRepository> _directorRepositoryMock;
+        private readonly Mock<ILogger<CreateAnimeCommandHandler>> _loggerMock;
         private readonly IMapper _mapper;
         private readonly CreateAnimeCommandHandler _handler;
 
         public CreateAnimeCommandHandlerTests()
         {
             _animeRepositoryMock = new Mock<IAnimeRepository>();
+            _directorRepositoryMock = new Mock<IDirectorRepository>();
+            _loggerMock = new Mock<ILogger<CreateAnimeCommandHandler>>();
+
             var mapperConfig = new MapperConfiguration(c =>
             {
                 c.AddProfile<AnimeProfile>();
             });
             _mapper = mapperConfig.CreateMapper();
-            _handler = new CreateAnimeCommandHandler(_animeRepositoryMock.Object, _mapper);
+
+            _handler = new CreateAnimeCommandHandler(
+                _animeRepositoryMock.Object,
+                _directorRepositoryMock.Object,
+                _mapper,
+                _loggerMock.Object
+            );
         }
 
         [Fact]
@@ -48,6 +60,8 @@ namespace Animes.Application.Tests.Features.Animes.Commands
                 Director = new Director { Id = 1, Name = "Hayato Date" }
             };
 
+            _directorRepositoryMock.Setup(r => r.GetByIdAsync(command.DirectorId.Value)).ReturnsAsync(new Director());
+            _animeRepositoryMock.Setup(r => r.GetAnimesAsync(null, command.Name, null)).ReturnsAsync(new List<Anime>());
             _animeRepositoryMock.Setup(r => r.CreateAsync(It.IsAny<Anime>())).ReturnsAsync(anime);
             _animeRepositoryMock.Setup(r => r.GetByIdAsync(anime.Id)).ReturnsAsync(anime);
 
