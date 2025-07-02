@@ -28,17 +28,19 @@ public class DirectorsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> GetDirectors()
     {
-        try
+        _logger.LogInformation("Buscando todos os diretores.");
+
+        var query = new GetDirectorsQuery();
+        var result = await _mediator.Send(query);
+
+        if (!result.Any())
         {
-            var query = new GetDirectorsQuery();
-            var result = await _mediator.Send(query);
-            return Ok(result);
+            _logger.LogInformation("Nenhum diretor encontrado.");
+            return Ok(Enumerable.Empty<DirectorDto>());
         }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Ocorreu um erro ao buscar os diretores.");
-            return StatusCode(500, "Ocorreu um erro interno no servidor.");
-        }
+
+        _logger.LogInformation("{DirectorCount} diretores encontrados.", result.Count());
+        return Ok(result);
     }
 
     /// <summary>
@@ -55,16 +57,13 @@ public class DirectorsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> CreateDirector([FromBody] CreateDirectorCommand command)
     {
-        try
-        {
-            var result = await _mediator.Send(command);
-            return CreatedAtAction(nameof(GetDirectors), new { id = result.Id }, result);
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Ocorreu um erro ao criar o diretor.");
-            return StatusCode(500, "Ocorreu um erro interno no servidor.");
-        }
+        _logger.LogInformation("Iniciando a criação de um novo diretor com o nome: {DirectorName}", command.Name);
+
+        var result = await _mediator.Send(command);
+
+        _logger.LogInformation("Diretor {DirectorName} com Id {DirectorId} criado com sucesso.", result.Name, result.Id);
+
+        return CreatedAtAction(nameof(GetDirectors), new { id = result.Id }, result);
     }
 
     /// <summary>
@@ -86,23 +85,16 @@ public class DirectorsController : ControllerBase
     {
         if (id != command.Id)
         {
+            _logger.LogWarning("O ID ({RouteId}) da rota não corresponde ao ID ({BodyId}) do corpo da requisição.", id, command.Id);
             return BadRequest("O ID do diretor na rota não corresponde ao ID no corpo da requisição.");
         }
 
-        try
-        {
-            var result = await _mediator.Send(command);
-            if (result == null)
-            {
-                return NotFound();
-            }
-            return Ok(result);
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, $"Ocorreu um erro ao atualizar o diretor com ID {id}.");
-            return StatusCode(500, "Ocorreu um erro interno no servidor.");
-        }
+        _logger.LogInformation("Iniciando a atualização do diretor com Id: {DirectorId}", id);
+
+        var result = await _mediator.Send(command);
+
+        _logger.LogInformation("Diretor com Id {DirectorId} atualizado com sucesso.", id);
+        return Ok(result);
     }
 
     /// <summary>
@@ -119,20 +111,13 @@ public class DirectorsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> DeleteDirector(int id)
     {
-        try
-        {
-            var command = new DeleteDirectorCommand { Id = id };
-            var result = await _mediator.Send(command);
-            if (!result)
-            {
-                return NotFound();
-            }
-            return NoContent();
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, $"Ocorreu um erro ao excluir o diretor com ID {id}.");
-            return StatusCode(500, "Ocorreu um erro interno no servidor.");
-        }
+        _logger.LogInformation("Iniciando a exclusão do diretor com Id: {DirectorId}", id);
+
+        var command = new DeleteDirectorCommand { Id = id };
+        await _mediator.Send(command);
+
+        _logger.LogInformation("Diretor com Id {DirectorId} excluído com sucesso.", id);
+
+        return NoContent();
     }
 }
