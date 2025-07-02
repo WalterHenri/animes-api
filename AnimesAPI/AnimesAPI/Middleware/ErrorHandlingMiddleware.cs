@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using Animes.Application.Exceptions;
+using System.Net;
 using System.Text.Json;
 
 namespace AnimesAPI.Middleware
@@ -38,7 +39,17 @@ namespace AnimesAPI.Middleware
                     code = HttpStatusCode.NotFound;
                     result = JsonSerializer.Serialize(new { error = notFoundException.Message });
                     break;
-                // Adicione outros casos para exceções customizadas aqui
+
+                case BadRequestException badRequestException: 
+                    code = HttpStatusCode.BadRequest;
+                    result = JsonSerializer.Serialize(new { error = badRequestException.Message });
+                    break;
+
+                case DuplicatedEntityException duplicatedEntityException:
+                    code = HttpStatusCode.Conflict;
+                    result = JsonSerializer.Serialize(new { error = duplicatedEntityException.Message });
+                    break;
+
                 default:
                     result = JsonSerializer.Serialize(new { error = "Ocorreu um erro interno no servidor." });
                     break;
@@ -50,3 +61,4 @@ namespace AnimesAPI.Middleware
         }
     }
 }
+

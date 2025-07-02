@@ -31,17 +31,19 @@ public class AnimesController : ControllerBase
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> GetAnimes([FromQuery] int? id, [FromQuery] string? name, [FromQuery] string? director)
     {
-        try
+        _logger.LogInformation("Buscando animes com os filtros: Id={AnimeId}, Name={AnimeName}, Director={DirectorName}", id, name, director);
+
+        var query = new GetAnimesQuery { Id = id, Name = name, Director = director };
+        var result = await _mediator.Send(query);
+
+        if (!result.Any())
         {
-            var query = new GetAnimesQuery { Id = id, Name = name, Director = director };
-            var result = await _mediator.Send(query);
-            return Ok(result);
+            _logger.LogInformation("Nenhum anime encontrado para os filtros fornecidos.");
+            return Ok(Enumerable.Empty<AnimeDto>());
         }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Ocorreu um erro ao buscar os animes.");
-            return StatusCode(500, "Ocorreu um erro interno no servidor.");
-        }
+
+        _logger.LogInformation("{AnimeCount} animes encontrados.", result.Count());
+        return Ok(result);
     }
 
     /// <summary>
@@ -58,16 +60,13 @@ public class AnimesController : ControllerBase
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> CreateAnime([FromBody] CreateAnimeCommand command)
     {
-        try
-        {
-            var result = await _mediator.Send(command);
-            return CreatedAtAction(nameof(GetAnimes), new { id = result.Id }, result);
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Ocorreu um erro ao criar o anime.");
-            return StatusCode(500, "Ocorreu um erro interno no servidor.");
-        }
+        _logger.LogInformation("Iniciando a criação de um novo anime com o nome: {AnimeName}", command.Name);
+
+        var result = await _mediator.Send(command);
+
+        _logger.LogInformation("Anime {AnimeName} com Id {AnimeId} criado com sucesso.", result.Name, result.Id);
+
+        return CreatedAtAction(nameof(GetAnimes), new { id = result.Id }, result);
     }
 
 
@@ -90,23 +89,16 @@ public class AnimesController : ControllerBase
     {
         if (id != command.Id)
         {
+            _logger.LogWarning("O ID ({RouteId}) da rota não corresponde ao ID ({BodyId}) do corpo da requisição.", id, command.Id);
             return BadRequest("O ID do anime na rota não corresponde ao ID no corpo da requisição.");
         }
 
-        try
-        {
-            var result = await _mediator.Send(command);
-            if (result == null)
-            {
-                return NotFound();
-            }
-            return Ok(result);
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, $"Ocorreu um erro ao atualizar o anime com ID {id}.");
-            return StatusCode(500, "Ocorreu um erro interno no servidor.");
-        }
+        _logger.LogInformation("Iniciando a atualização do anime com Id: {AnimeId}", id);
+
+        var result = await _mediator.Send(command);
+
+        _logger.LogInformation("Anime com Id {AnimeId} atualizado com sucesso.", id);
+        return Ok(result);
     }
 
 
@@ -124,20 +116,12 @@ public class AnimesController : ControllerBase
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> DeleteAnime(int id)
     {
-        try
-        {
-            var command = new DeleteAnimeCommand { Id = id };
-            var result = await _mediator.Send(command);
-            if (!result)
-            {
-                return NotFound();
-            }
-            return NoContent();
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, $"Ocorreu um erro ao excluir o anime com ID {id}.");
-            return StatusCode(500, "Ocorreu um erro interno no servidor.");
-        }
+        _logger.LogInformation("Iniciando a exclusão do anime com Id: {AnimeId}", id);
+
+        var command = new DeleteAnimeCommand { Id = id };
+        await _mediator.Send(command);
+
+        _logger.LogInformation("Anime com Id {AnimeId} excluído com sucesso.", id);
+        return NoContent();
     }
 }
